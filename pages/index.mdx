@@ -1,0 +1,52 @@
+import {make as Layout} from "../layouts/MainLayout.bs.js"
+import Link from "next/link";
+import Highlight, { reasonExample } from "../common/highlight";
+export default Layout
+
+# Hello Reasoners!
+
+Let's get comfortable with our project structure and editor first. Make sure you have the correct
+[`reason-vscode`](https://marketplace.visualstudio.com/items?itemName=jaredly.reason-vscode)
+extension installed.
+
+If you are super ambitious about the tooling and if you are interested in
+checking out TailwindCSS, you might also want to install the [TailwindCSS
+Plugin](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
+as well!
+
+After an initial `yarn bs:build` / `npm run bs:build`, you will have all the Reason source files
+built in our project (you will see `*.bs.js` files right next to it when
+compiled successfully).
+
+If you are curious on how the BuckleScript compiler nows about your Reason
+files, check out the `bsconfig.json` file!
+
+
+## The Super-Ambitious Goal of this Workshop
+
+In less than 4 hours, we will have hopefully built a very basic hiking webapp
+backed by a Prismic CMS for providing the data! The app then should be accessible on
+this website via a `/hiking` route!
+
+## How will we get there?
+
+We will start slow, do not worry.
+
+1. A short introduction to modules, types, records and lists
+1. Pattern matching, if / elses, functions and labelled arguments
+1. Writing our first ReactJS component / discover Reason JSX
+1. Small introduction to BuckleScript's interop layer to bind to JS
+1. Use all that new knowledge to build the hiking app (most likely we will be working together as a group)
+
+We will try to allocate at least 1 hour for building the app. It will definitely
+be a challenge to be done on time, so let's not feel bad when we don't get
+through everything right away :-)
+
+## Todo list for our hiking app (only for the end)
+
+- Add a new page `/hiking` as our starting point
+- Use the `getInitialProps` API with your `pages/Hiking.re` component to fetch some data from our Prismic endpoint via GraphQL (see `examples/GetInitialPropsExample.re`)
+- Render a list of hiking attractions by showing an image, name and short
+  description
+- When clicking on an item, expand the attraction and show a `RichText`
+  description, similarly to how we are displaying markdown

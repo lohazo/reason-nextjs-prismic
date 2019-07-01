@@ -1,0 +1,69 @@
+import {make as Layout} from "../layouts/MainLayout.bs.js"
+import Link from "next/link";
+export default Layout
+
+# Help
+
+**Workshop Material:**
+- > [slides.pdf](/static/slides.pdf)
+- > [Github Repo for this website](https://github.com/ryyppy/reason-workshop-nextjs)
+
+**Reason related Links:**
+- > [Official Reason Language Docs](https://reasonml.github.io/docs/en/what-and-why)
+- > [Reason / Try Playground](https://reasonml.github.io/en/try)
+
+**BuckleScript / JS interop related Links:**
+- > [BuckleScript Docs](https://bucklescript.github.io/docs/en/interop-cheatsheet)
+- > [BuckleScript JS API](https://bucklescript.github.io/bucklescript/api/Js.html)
+- > [BuckleScript Belt API](https://bucklescript.github.io/bucklescript/api/Belt.html)
+
+**Belt related Links (collection stdlib):**
+- > [List](https://bucklescript.github.io/bucklescript/api/Belt_List.html)
+- > [Array](https://bucklescript.github.io/bucklescript/api/Belt.Array.html)
+- > [String (currently only in the JS namespace)](https://bucklescript.github.io/bucklescript/api/Js_string.html)
+
+**NextJS related Links:**
+- > [NextJS Docs](https://nextjs.org/docs)
+
+**Hiking App related data:**
+- > [Graphiql Data Explorer](https://hiking.prismic.io/graphql)
+
+
+## FAQ
+
+## What's the project structure?
+
+First of all: This is a NextJS project, which is the same framework as you would use in JavaScript.
+We just added `bs-platform` (the Reason / JS compiler) as a dependency and then added a few Reason components, which seemlessly
+integrate with the ES6 module system (each `*.re` file is compiled to a ES6 module with a `*.bs.js` ending)
+
+- `./components`: Contains independent components (just for structure)
+- `./pages`: Pages is a magic folder containing all the pages NextJS should create a route for. Each page is a module exporting a React component as default.
+- `./common`: This contains modules with a "utility character"
+- `./bindings`: This contains modules which bind to JavaScript modules, such as `nextjs` related components exposed from the `nextjs` package
+
+## Why is there so much existing code in here already?
+
+A goal of this workshop is to give you a rough idea on how it feels to work in
+an existing codebase. This is basically a coworker simulation, where your
+colleagues already implemented some stuff!
+
+When you are implementing your own components, feel free to get inspiration from what you can find in here.
+Copy / Pasting is allowed of course, but make sure that you really understand the code first.
+
+**Following files are quite useful:**
+
+- `./componentes/Text.re`: Contains our html building blocks to enforce some kind of design system (h1, h2, h3, p, ul,...)
+- `./tailwind.config.js`: This is the central configuration file for [tailwind](https://tailwindcss.com/)
+
+## Why TailwindCSS?
+
+While doing product development in ReasonReact, we learned from experience that
+Tailwind is a great fit. It compiles to a single CSS file and you can also fall
+back to plain css by editing the `styles/main.css` as well (Tailwind can also be
+used inside CSS with `@apply` directive, check out the Tailwind documentation if
+you want to know more how to combine both worlds).
+
+Alternatively you can also use `bs-css`, which is a JS-in-CSS library binding
+based on Emotion (probably the most used one in the Reason community). The cool
+thing about it is that it's type-safe.

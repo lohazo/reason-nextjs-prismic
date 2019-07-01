@@ -1,0 +1,21 @@
+/* Markdown related stuff */
+/* Sometimes we cannot circumvent the cascade, especially for nested lists */
+
+.md-ol {
+    counter-reset: li;
+    /*@apply list-reset inline-block -ml-4 text-primary;*/
+  }
+  
+  .md-ol > li {
+    counter-increment: li;
+  }
+  
+  .md-ol > .md-li p::before {
+    content: counter(li);
+    @apply inline-block w-4;
+  }
+  
+  .md-ul > .md-li p::before {
+    content: "•";
+    @apply text-primary inline-block w-4 -ml-4 pr-2;
+  }
